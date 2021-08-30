@@ -31,7 +31,6 @@ stop_words = ['i', 'me', 'my', 'myself', 'we', 'our',
 #cleaning up text
 import re
 def get_only_chars(line):
-
     clean_line = ""
 
     line = line.replace("’", "")
@@ -46,10 +45,10 @@ def get_only_chars(line):
             clean_line += char
         else:
             clean_line += ' '
-
     clean_line = re.sub(' +',' ',clean_line) #delete extra spaces
-    if clean_line[0] == ' ':
-        clean_line = clean_line[1:]
+    if len(clean_line) > 0:
+	    if clean_line[0] == ' ':
+	        clean_line = clean_line[1:]
     return clean_line
 
 ########################################################################
@@ -171,7 +170,6 @@ def add_word(new_words):
 ########################################################################
 
 def eda_4(sentence, alpha_sr=0.3, alpha_ri=0.2, alpha_rs=0.1, p_rd=0.15, num_aug=9):
-	
 	sentence = get_only_chars(sentence)
 	words = sentence.split(' ')
 	words = [word for word in words if word is not '']

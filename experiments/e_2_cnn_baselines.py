@@ -7,10 +7,10 @@ from e_config import *
 #### run model and get acc ####
 ###############################
 
-def run_model(train_file, test_file, num_classes, input_size, percent_dataset, word2vec):
+def run_cnn(train_file, test_file, num_classes, input_size, percent_dataset, word2vec):
 
 	#initialize model
-	model = build_model(input_size, word2vec_len, num_classes)
+	model = build_cnn(input_size, word2vec_len, num_classes)
 
 	#load data
 	train_x, train_y = get_x_y(train_file, num_classes, word2vec_len, input_size, word2vec, percent_dataset)
@@ -71,7 +71,7 @@ def compute_baselines(writer):
 
 			train_path = dataset_folder + '/train_orig.txt'
 			test_path = 'size_data_t1/test/' + dataset + '/test.txt'
-			acc = run_model(train_path, test_path, num_classes, input_size, 1, word2vec)
+			acc = run_cnn(train_path, test_path, num_classes, input_size, 1, word2vec)
 			performances.append(str(acc))
 
 		line = ','.join(performances)
@@ -84,7 +84,7 @@ def compute_baselines(writer):
 
 if __name__ == "__main__":
 
-	writer = open('baseline_rnn/' + get_now_str() + '.csv', 'w')
+	writer = open('baseline_cnn/' + get_now_str() + '.csv', 'w')
 
 	for i in range(10, 24):
 

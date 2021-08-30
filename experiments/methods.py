@@ -1,10 +1,12 @@
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers.recurrent import LSTM
-from keras.layers import Bidirectional
-import keras.layers as layers
-from keras.models import Sequential
-from keras.models import load_model
-from keras.callbacks import EarlyStopping
+
+
+from tensorflow.keras.layers import Dense, Activation, Dropout
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import Bidirectional
+import tensorflow.keras.layers as layers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import load_model
+from tensorflow.keras.callbacks import EarlyStopping
 
 from sklearn.utils import shuffle
 from sklearn.metrics import accuracy_score
@@ -115,7 +117,7 @@ def gen_vocab_dicts(folder, output_pickle_path, huge_word2vec):
 #getting the x and y inputs in numpy array form from the text file
 def get_x_y(train_txt, num_classes, word2vec_len, input_size, word2vec, percent_dataset):
 
-	#read in lines
+    #read in lines
 	train_lines = open(train_txt, 'r').readlines()
 	shuffle(train_lines)
 	train_lines = train_lines[:int(percent_dataset*len(train_lines))]

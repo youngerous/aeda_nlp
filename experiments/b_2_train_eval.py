@@ -1,7 +1,11 @@
+
 from b_config import * 
 from methods import *
-from numpy.random import seed
-seed(0)
+import random
+import sys
+
+sd = int(sys.argv[1])
+random.seed(sd)
 
 ###############################
 #### run model and get acc ####
@@ -50,6 +54,7 @@ if __name__ == "__main__":
 	#get the accuracy at each increment
 	orig_accs = {dataset:{} for dataset in datasets}
 	aug_accs = {dataset:{} for dataset in datasets}
+	aug_plus_orig_accs = {dataset:{} for dataset in datasets}
 
 	writer = open('outputs_f2/' + get_now_str() + '.csv', 'w')
 
@@ -59,14 +64,21 @@ if __name__ == "__main__":
 		dataset = datasets[i]
 		num_classes = num_classes_list[i]
 		input_size = input_size_list[i]
+
 		train_orig = dataset_folder + '/train_orig.txt'
 		train_aug_st = dataset_folder + '/train_aug_st.txt'
+		train_aug_plus_orig = dataset_folder + '/train_aug_plus_orig.txt'
+
 		test_path = dataset_folder + '/test.txt'
-		word2vec_pickle = dataset_folder + '/word2vec.p'
+		word2vec_pickle = dataset_folder + '/word2vec.pkl'
 		word2vec = load_pickle(word2vec_pickle)
 
 		for increment in increments:
 			
+			#calculate augmented plus original accuracy
+			aug_plus_orig_acc = run_model(train_aug_plus_orig, test_path, num_classes, increment)
+			aug_plus_orig_accs[dataset][increment] = aug_plus_orig_acc
+
 			#calculate augmented accuracy
 			aug_acc = run_model(train_aug_st, test_path, num_classes, increment)
 			aug_accs[dataset][increment] = aug_acc
@@ -75,9 +87,9 @@ if __name__ == "__main__":
 			orig_acc = run_model(train_orig, test_path, num_classes, increment)
 			orig_accs[dataset][increment] = orig_acc
 
-			print(dataset, increment, orig_acc, aug_acc)
-			writer.write(dataset + ',' + str(increment) + ',' + str(orig_acc) + ',' + str(aug_acc) + '\n')
+			print(dataset, increment, orig_acc, aug_acc, aug_plus_orig_acc)
+			writer.write(dataset + ',' + str(increment) + ',' + str(orig_acc) + ',' + str(aug_acc) + ',' + str(aug_plus_orig_acc) + '\n')
 
 			gc.collect()
 
-	print(orig_accs, aug_accs)
+	print(orig_accs, aug_accs, aug_plus_orig_accs)

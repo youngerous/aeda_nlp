@@ -22,7 +22,7 @@ if __name__ == "__main__":
 		word2vec_pickle = dataset_folder + '/word2vec.p' 
 
 		#augment the data
-		gen_tsne_aug(test_short, test_aug_short)
+		# gen_tsne_aug(test_short, test_aug_short)
 
 		#generate the vocab dictionaries
 		gen_vocab_dicts(dataset_folder, word2vec_pickle, huge_word2vec)

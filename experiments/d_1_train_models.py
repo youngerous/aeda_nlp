@@ -48,10 +48,10 @@ def run_model(train_file, test_file, num_classes, model_output_path):
 if __name__ == "__main__":
 
 	#parameters
-	dataset_folders = ['increment_datasets_f2/trec', 'increment_datasets_f2/pc']
-	output_paths = ['outputs_f4/trec_aug.h5', 'outputs_f4/pc_aug.h5']
-	num_classes_list = [6, 2]
-	input_size_list = [25, 25]
+	dataset_folders = ['increment_datasets_f2/pc'] #['increment_datasets_f2/trec', 'increment_datasets_f2/pc']
+	output_paths = ['outputs_f4/pc_aug.h5'] #['outputs_f4/trec_aug.h5', 'outputs_f4/pc_aug.h5']
+	num_classes_list = [2] # [6, 2]
+	input_size_list = [25] # [25, 25]
 
 	#word2vec dictionary
 	word2vec_len = 300

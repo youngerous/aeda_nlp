@@ -1,6 +1,6 @@
 from methods import *
 from numpy.random import seed
-from keras import backend as K
+from tensorflow.keras import backend as K
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 seed(0)
@@ -122,12 +122,12 @@ if __name__ == "__main__":
 	input_size = 25
 
 	datasets = ['pc'] #['pc', 'trec']
-	num_classes_list =[2] #[2, 6]
+	num_classes_list = [2] #[2, 6]
 
 	for i, dataset in enumerate(datasets):
 
 		#load parameters
-		model_checkpoint = 'outputs_f4/' + dataset + '.h5'
+		model_checkpoint = 'outputs_f4/' + dataset + '_aug.h5'
 		file = 'special_f4/' + dataset + '/test_short_aug.txt'
 		num_classes = num_classes_list[i]
 		word2vec_pickle = 'special_f4/' + dataset + '/word2vec.p'
