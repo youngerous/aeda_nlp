@@ -1,4 +1,4 @@
-# EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks
+# AEDA: A Easier Data Augmentation Technique for Text Classification
 [![Conference](http://img.shields.io/badge/EMNLP-2019-4b44ce.svg)](https://arxiv.org/abs/1901.11196)
 
 This is the code for the EMNLP-IJCNLP paper [EDA: Easy Data Augmentation techniques for boosting performance on text classification tasks.](https://arxiv.org/abs/1901.11196) 
