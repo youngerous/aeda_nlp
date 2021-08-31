@@ -4,7 +4,6 @@ This is the code for the EMNLP 2021 paper [AEDA: An Easier Data Augmentation Tec
 
 
 # Citation
-If you use AEDA in your paper, please cite us:
 ```
 @misc{karimi2021aeda,
       title={AEDA: An Easier Data Augmentation Technique for Text Classification}, 
