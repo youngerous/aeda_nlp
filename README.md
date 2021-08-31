@@ -1,4 +1,4 @@
-# AEDA: A Easier Data Augmentation Technique for Text Classification
+# AEDA: An Easier Data Augmentation Technique for Text Classification
 
 This is the code for the EMNLP 2021 paper [AEDA: An Easier Data Augmentation Technique for Text Classification](https://arxiv.org/abs/2108.13230) 
 
