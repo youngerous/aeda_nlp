@@ -1,3 +1,6 @@
+# AEDA: An Easier Data Augmentation Technique for Text classification
+# Akbar Karimi, Leonardo Rossi, Andrea Prati
+
 from pprint import pprint
 import csv
 import pandas as pd
@@ -5,18 +8,23 @@ import ast
 from ast import literal_eval
 import random
 
-
 random.seed(0)
 
-def insert_punctuation_marks(sentence):
+PUNCTUATIONS = ['.', ',', '!', '?', ';', ':']
+DATASETS = ['cr', 'sst2', 'subj', 'pc', 'trec']
+NUM_AUGS = [1, 2, 4, 8]
+PUNC_RATIO = 0.3
+
+# Insert punction words into a given sentence with the given ratio "punc_ratio"
+def insert_punctuation_marks(sentence, punc_ratio=PUNC_RATIO):
 	words = sentence.split(' ')
 	new_line = []
-	q = random.randint(1, int(len(words)/3)+1)
+	q = random.randint(1, int(punc_ratio * len(words) + 1))
 	qs = random.sample(range(0, len(words)), q)
-	punctuations = ['.', ',', '!', '?', ';', ':']
+
 	for j, word in enumerate(words):
 		if j in qs:
-			new_line.append(punctuations[random.randint(0, len(punctuations)-1)])
+			new_line.append(PUNCTUATIONS[random.randint(0, len(PUNCTUATIONS)-1)])
 			new_line.append(word)
 		else:
 			new_line.append(word)
@@ -24,11 +32,10 @@ def insert_punctuation_marks(sentence):
 	return new_line
 
 
-def main(datum):
-	augs = [1, 2, 4, 8]
-	for aug in augs:
+def main(dataset):
+	for aug in NUM_AUGS:
 		data_aug = []
-		with open(datum+'/train_orig.txt', 'r') as train_orig:
+		with open(dataset + '/train.txt', 'r') as train_orig:
 			for line in train_orig:
 				line1 = line.split('\t')
 				label = line1[0]
@@ -39,11 +46,10 @@ def main(datum):
 					data_aug.append(line_aug)
 				data_aug.append(line)
 
-		with open(datum + '/train_aug_plus_orig_' + str(aug) + '.txt', 'w') as train_aug_plus_orig:
-			train_aug_plus_orig.writelines(data_aug)
+		with open(dataset + '/train_orig_plus_augs_' + str(aug) + '.txt', 'w') as train_orig_plus_augs:
+			train_orig_plus_augs.writelines(data_aug)
 
 
 if __name__ == "__main__":
-	data = ['cr', 'sst2', 'subj', 'pc', 'trec']
-	for datum in data:
-		main(datum)
+	for dataset in DATASETS:
+		main(dataset)
