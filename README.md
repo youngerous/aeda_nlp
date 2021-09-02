@@ -4,7 +4,7 @@ This is the code for the EMNLP 2021 paper [AEDA: An Easier Data Augmentation Tec
 
 The baseline code is for [EDA: Easy Data Augmentation techniques for boosting performance on text classification tasks](https://arxiv.org/abs/1901.11196)
 
-Our augmentation code can be found in the code folder titled aeda.py. In addition, we also make available our train and test data which is the data folder.
+Our augmentation code can be found in the code folder titled aeda.py. In addition, we also make available our train and test data which is in the data folder.
 
 # Citation
 ```
