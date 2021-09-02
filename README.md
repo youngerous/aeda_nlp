@@ -6,6 +6,7 @@ The baseline code is for [EDA: Easy Data Augmentation techniques for boosting pe
 
 Our augmentation code can be found in the code folder titled aeda.py. In addition, we also make available our train and test data which is in the data folder.
 
+![alt text](aeda_figure.png)
 # Citation
 ```
 @misc{karimi2021aeda,
