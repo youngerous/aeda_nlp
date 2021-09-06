@@ -1,11 +1,6 @@
 # AEDA: An Easier Data Augmentation Technique for Text classification
 # Akbar Karimi, Leonardo Rossi, Andrea Prati
 
-from pprint import pprint
-import csv
-import pandas as pd
-import ast
-from ast import literal_eval
 import random
 
 random.seed(0)
